@@ -9,12 +9,11 @@ import org.junit.jupiter.params.provider.*;
 public class PriorityQueueTest {
     static Stream<Arguments> argumentsStream() {
         return Stream.of(
-                //Arguments.of(new int[]{5,4,3,2,1}, new int[]{1,2,3,4,5}),
-                Arguments.of(new int[]{5,4,3,2,1}, new int[]{2,3,4,5,6}),
-                Arguments.of(new int[]{1,4,3,2,5}, new int[]{1,2,3,4,6}),
-                Arguments.of(new int[]{-2,4,-5,3,-1}, new int[]{-5,-2,-1,3,3}),
-                Arguments.of(new int[]{24,-9,0,97,-55}, new int[]{-55,-9,0,23,97}),
-                Arguments.of(new int[]{15,32,7,69,58}, new int[]{7,15,32,58,68})
+                Arguments.of(new int[]{5,4,3,2,1}, new int[]{1,2,3,4,5}),
+                Arguments.of(new int[]{1,4,3,2,5}, new int[]{1,2,3,4,5}),
+                Arguments.of(new int[]{-2,4,-5,3,-1}, new int[]{-5,-2,-1,3,4}),
+                Arguments.of(new int[]{24,-9,0,97,-55}, new int[]{-55,-9,0,24,97}),
+                Arguments.of(new int[]{15,32,7,69,58}, new int[]{7,15,32,58,69})
         );
     }
 
@@ -35,8 +34,7 @@ public class PriorityQueueTest {
 
     @Test
     public void WhenExceptionThrown_initialCapacityLessThan1() {
-        //Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-        Exception exception = assertThrows(NullPointerException.class, () -> {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             PriorityQueue queue=new PriorityQueue(0);
         });
     }
